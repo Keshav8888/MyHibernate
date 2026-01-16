@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.keshav.config.EmpConfiguration;
 import com.keshav.entity.Employee;
  
 public class EmployeeRunner{
@@ -30,13 +31,13 @@ public class EmployeeRunner{
 //		SessionFactory sessionFactory = metadata.buildSessionFactory();
 		
 // 		StandardServiceRegistry single line(Method chaining)
-		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
+//		SessionFactory sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build()).getMetadataBuilder().build().buildSessionFactory();
 		
-		Session session = sessionFactory.openSession();
-		Transaction tx=session.beginTransaction();
-		
-		session.persist(emp);;
-		tx.commit();
+//		Session session = sessionFactory.openSession();
+//		Transaction tx=session.beginTransaction();
+//		
+//		session.persist(emp);;
+//		tx.commit();
 		
 //		get method(now deprecated)
 //		Employee employee = session.get(Employee.class,5);
@@ -60,5 +61,12 @@ public class EmployeeRunner{
 //		session.load(employee,10);   //it will give ObjectNotFoundException as 10th Object is not found in database
 //		System.out.println(employee);
 
+		
+		// for .java based
+		Session session = EmpConfiguration.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		
+		session.persist(emp);;
+		tx.commit();
 	}
 }
