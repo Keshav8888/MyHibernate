@@ -16,7 +16,7 @@ public class EmployeeRunner{
 	
 	public static void main(String[] args) {
 		
-		Employee emp = new Employee("Pintu","Male",40500);
+		Employee emp = new Employee("Pintu","Male",40500,"INDIA");
 		
 //      using "Configuration"
 //		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
