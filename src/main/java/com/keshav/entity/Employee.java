@@ -22,7 +22,7 @@ public class Employee {
 //	private String country;
 
 	@OneToOne
-//	@JoinColumn(name = "add_id")
+	@JoinColumn(name = "add_id") //to change the provided default name(that is address_hNo)
 	private Address address;
 	
 	public Employee() {
