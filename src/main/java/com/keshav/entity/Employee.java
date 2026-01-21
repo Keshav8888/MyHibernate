@@ -11,16 +11,15 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "e_Name")
 	private String name;
 	private String gender;
 	private int salary;
 	
+	private Address address;
 	
 	public Employee() {
 		super();
 	}
-
 
 //	public Employee(int id, String name, String gender, int salary) {
 	public Employee(String name, String gender, int salary) {
@@ -31,6 +30,15 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public int getId() {
 		return id;
@@ -71,10 +79,13 @@ public class Employee {
 		this.salary = salary;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", address="
+				+ address + "]";
 	}
+
+
+	
 
 }
