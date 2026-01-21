@@ -10,13 +10,19 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.keshav.config.EmpConfiguration;
+import com.keshav.entity.Address;
 import com.keshav.entity.Employee;
  
 public class EmployeeRunner{
 	
 	public static void main(String[] args) {
 		
-		Employee emp = new Employee("Pintu","Male",40500,"INDIA");
+//		Employee emp = new Employee("Pintu","Male",40500,"INDIA");
+		
+		Employee emp = new Employee("Pintu","Male",40500);
+		Address add = new Address("Noida","UP");
+//		
+		emp.setAddress(add);
 		
 //      using "Configuration"
 //		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -65,8 +71,8 @@ public class EmployeeRunner{
 		// for .java based
 		Session session = EmpConfiguration.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
-		
-		session.persist(emp);;
+		session.persist(add);
+		session.persist(emp);
 		tx.commit();
 	}
 }
