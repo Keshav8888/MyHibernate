@@ -19,9 +19,19 @@ public class EmployeeRunner{
 		
 //		Employee emp = new Employee("Pintu","Male",40500,"INDIA");
 		
-		Employee emp = new Employee("Pintu","Male",40500);
-		Address add = new Address("Noida","UP");
-//		
+//		Employee emp = new Employee("Milan","Male",40500);
+//		Address add = new Address("GZB","UP");
+		
+		Employee emp = new Employee();
+		emp.setName("Vinay");
+		emp.setGender("Male");
+		emp.setSalary(40000);
+		
+		Address add = new Address();
+		add.setCity("Noida");
+		add.setState("UP");
+		add.setEmployee(emp);
+		
 		emp.setAddress(add);
 		
 //      using "Configuration"
@@ -74,5 +84,15 @@ public class EmployeeRunner{
 		session.persist(add);
 		session.persist(emp);
 		tx.commit();
+		
+		Employee employee = session.find(Employee.class, 1);
+		System.out.println(employee);
+		System.out.println(employee.getAddress());
+		
+		Address address = session.find(Address.class, 1);
+		System.out.println(address);
+		System.out.println(address.getEmployee());
+
+		
 	}
 }

@@ -21,7 +21,7 @@ public class Employee {
 //	@Transient
 //	private String country;
 
-	@OneToOne
+	@OneToOne(mappedBy = "employee")
 	@JoinColumn(name = "add_id") //to change the provided default name(that is address_hNo)
 	private Address address;
 	
@@ -88,8 +88,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", address="
-				+ address + "]";
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
 	}
 
 
