@@ -14,9 +14,6 @@ public class Address {
 	private int hNo;
 	private String city,state;
 	
-	@OneToOne
-	private Employee employee;
-	
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,14 +23,6 @@ public class Address {
 		super();
 		this.city = city;
 		this.state = state;
-	}
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
 	}
 
 	public int gethNo() {

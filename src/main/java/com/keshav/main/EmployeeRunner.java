@@ -1,5 +1,7 @@
 package com.keshav.main;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,17 +24,30 @@ public class EmployeeRunner{
 //		Employee emp = new Employee("Milan","Male",40500);
 //		Address add = new Address("GZB","UP");
 		
-		Employee emp = new Employee();
-		emp.setName("Vinay");
-		emp.setGender("Male");
-		emp.setSalary(40000);
-		
-		Address add = new Address();
-		add.setCity("Noida");
-		add.setState("UP");
-		add.setEmployee(emp);
-		
-		emp.setAddress(add);
+//		Employee emp = new Employee();
+//		emp.setName("Vinay");
+//		emp.setGender("Male");
+//		emp.setSalary(40000);
+//		
+//		Address add1 = new Address();
+//		add1.setCity("Noida");
+//		add1.setState("UP");
+//		
+//		Address add2 = new Address();
+//		add2.setCity("GZB");
+//		add2.setState("UP");
+//		
+//		Address add3 = new Address();
+//		add3.setCity("Lucknow");
+//		add3.setState("UP");
+//		
+//		
+//		ArrayList<Address> listofAddresses = new ArrayList<>();
+//		listofAddresses.add(add1);
+//		listofAddresses.add(add2);
+//		listofAddresses.add(add3);
+//
+//		emp.setAddresses(listofAddresses);
 		
 //      using "Configuration"
 //		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -80,19 +95,16 @@ public class EmployeeRunner{
 		
 		// for .java based
 		Session session = EmpConfiguration.getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
-		session.persist(add);
-		session.persist(emp);
-		tx.commit();
+//		Transaction tx = session.beginTransaction();
+//		session.persist(add1);
+//		session.persist(add2);
+//		session.persist(add3);
+//		session.persist(emp);
+//		tx.commit();
+		
 		
 		Employee employee = session.find(Employee.class, 1);
 		System.out.println(employee);
-		System.out.println(employee.getAddress());
-		
-		Address address = session.find(Address.class, 1);
-		System.out.println(address);
-		System.out.println(address.getEmployee());
-
-		
+		System.out.println(employee.getAddresses());
 	}
 }
