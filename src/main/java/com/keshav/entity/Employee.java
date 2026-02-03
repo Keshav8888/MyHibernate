@@ -2,47 +2,35 @@ package com.keshav.entity;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Transient;
+import jakarta.persistence.ManyToMany;
   
 @Entity
 public class Employee {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-//	@Column(name = "e_Name")
 	private String name;
 	private String gender; 
 	private int salary;
-//	@Transient
-//	private String country;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Address> addresses;
 	
 	public Employee() {
 		super();
 	}
 
-
-//	public Employee(int id, String name, String gender, int salary) {
-//	public Employee(String name, String gender, int salary,String country) {
+	
 	public Employee(String name, String gender, int salary) {
-//		super();
-//		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
-//		this.country=country;
-	}
+		}
 
 	
 	public List<Address> getAddresses() {

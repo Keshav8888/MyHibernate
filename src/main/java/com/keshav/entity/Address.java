@@ -1,10 +1,12 @@
 package com.keshav.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Address {
@@ -13,6 +15,9 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int hNo;
 	private String city,state;
+	
+	@ManyToMany
+	private List<Employee>employee;
 	
 	public Address() {
 		super();
@@ -23,6 +28,14 @@ public class Address {
 		super();
 		this.city = city;
 		this.state = state;
+	}
+	
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
 	}
 
 	public int gethNo() {
